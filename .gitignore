@@ -1,0 +1,18 @@
+# Global
+.env
+.env.*
+__pycache__/
+*.log
+
+# Python
+venv/
+*.pyc
+
+# Node
+node_modules/
+build/
+dist/
+
+# OS
+.DS_Store
+Thumbs.db
