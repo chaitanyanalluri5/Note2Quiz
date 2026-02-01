@@ -11,7 +11,7 @@ export default function Home() {
   const [loadingOCR, setLoadingOCR] = useState(false);
   const [loadingQuiz, setLoadingQuiz] = useState(false);
 
-  const API_BASE = "https://note2quiz-wgsv.onrender.com";
+  const API_BASE = "process.env.REACT_APP_API_BASE ";
   const navigate = useNavigate();
 
   // ---------- FILE UPLOAD ----------
