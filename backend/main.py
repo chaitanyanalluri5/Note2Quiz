@@ -9,8 +9,6 @@ import json
 from sqlalchemy.orm import Session
 from database import SessionLocal, engine, Base
 from models import QuizHistory
-from paddleocr import PaddleOCR
-hand_ocr = PaddleOCR(use_angle_cls=True, lang="en")
 
 
 
@@ -382,51 +380,4 @@ async def extract_text(files: Optional[List[UploadFile]] = File(None)):
 
     return {"text": "\n".join(all_text).strip()}
 
-@app.post("/extract-text-handwritten")
-async def extract_text_handwritten(files: Optional[List[UploadFile]] = File(None)):
-    if not files:
-        return {"text": ""}
-
-    import numpy as np
-    import cv2
-
-    all_text = []
-
-    for file in files:
-        image_bytes = await file.read()
-        if not image_bytes:
-            continue
-
-        nparr = np.frombuffer(image_bytes, np.uint8)
-        img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
-
-        if img is None:
-            continue
-
-        # ✅ Preprocessing for handwriting
-        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-        gray = cv2.GaussianBlur(gray, (3, 3), 0)
-        gray = cv2.convertScaleAbs(gray, alpha=1.5, beta=15)
-
-        thresh = cv2.adaptiveThreshold(
-            gray, 255,
-            cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
-            cv2.THRESH_BINARY,
-            31, 12
-        )
-
-        processed = cv2.cvtColor(thresh, cv2.COLOR_GRAY2BGR)
-
-        result = hand_ocr.ocr(processed)
-
-        page_lines = []
-        if result:
-            for line in result:
-                # PaddleOCR output format: [ [box], (text, score) ]
-                page_lines.append(line[1][0])
-
-        all_text.append(" ".join(page_lines))
-
-    combined_text = "\n".join(all_text).strip()
-    return {"text": combined_text}
 
