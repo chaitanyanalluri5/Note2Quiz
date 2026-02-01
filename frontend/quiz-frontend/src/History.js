@@ -7,7 +7,7 @@ export default function History() {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
-  const API_BASE = "http://127.0.0.1:8000";
+  const API_BASE = "https://note2quiz-wgsv.onrender.com";
 
   const loadHistory = async () => {
     setLoading(true);
