@@ -42,25 +42,7 @@ export default function Home() {
     }
   };
 
-  const handleHandwrittenUpload = async () => {
-    if (!files.length) return alert("Upload images first!");
-
-    setLoadingOCR(true);
-    try {
-      const formData = new FormData();
-      files.forEach((f) => formData.append("files", f));
-
-      const res = await fetch(`${API_BASE}/extract-text-handwritten`, {
-        method: "POST",
-        body: formData,
-      });
-
-      const data = await res.json();
-      setText(data.text || "");
-    } finally {
-      setLoadingOCR(false);
-    }
-  };
+  
 
   // ---------- QUIZ ----------
   const generateQuiz = async () => {
@@ -167,13 +149,7 @@ export default function Home() {
   {loadingOCR ? "Extracting..." : "🖼 Extract Printed Notes"}
 </button>
 
-<button
-  className="btn btn-outline"
-  onClick={handleHandwrittenUpload}
-  disabled={loadingOCR}
->
-  {loadingOCR ? "Extracting..." : "✍ Extract Handwritten Notes"}
-</button>
+
             </div>
 
             <div className="row">
