@@ -8,7 +8,6 @@ It helps students quickly revise concepts by transforming notes into **MCQs, fil
 ## ✨ Features
 
 - 🖼 Upload printed notes / screenshots (OCR)
-- ✍ Extract handwritten notes using PaddleOCR
 - ⚡ Automatically generate quizzes from notes
 - 📝 Question types:
   - Multiple Choice Questions (MCQs)
@@ -68,7 +67,6 @@ npm start
 1. User uploads printed notes, screenshots, or handwritten notes as images.
 2. OCR engine extracts text from the uploaded images:
    - Printed text → EasyOCR
-   - Handwritten text → PaddleOCR
 3. Extracted text is cleaned and processed.
 4. Intelligent logic generates quiz questions from the notes:
    - Multiple Choice Questions (MCQs)
@@ -89,7 +87,6 @@ npm start
   - Avoid shadows and blurred images
   - Keep text straight and readable
 - Printed text generally gives higher accuracy than handwritten text.
-- Handwritten OCR accuracy varies based on handwriting style.
 - **100% OCR accuracy is not guaranteed**, as OCR technology has practical limitations.
 
 ---
