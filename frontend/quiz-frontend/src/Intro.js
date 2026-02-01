@@ -45,13 +45,7 @@ export default function Intro() {
                 </div>
               </div>
 
-              <div style={styles.featureItem}>
-                <span style={styles.featureIcon}>✍</span>
-                <div>
-                  <h4 style={styles.featureHeading}>Handwritten OCR</h4>
-                  <p style={styles.featureText}>Optional extraction support</p>
-                </div>
-              </div>
+              
 
               <div style={styles.featureItem}>
                 <span style={styles.featureIcon}>📝</span>
