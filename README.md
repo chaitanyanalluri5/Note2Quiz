@@ -99,8 +99,6 @@ npm start
 - Improve handwritten text recognition accuracy
 - Support PDF document uploads
 - Add difficulty levels for quizzes
-- User authentication and personalized dashboards
-- Cloud deployment for public access
 - AI-based question quality enhancement
 - Analytics for performance tracking
 ---
